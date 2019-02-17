@@ -1,0 +1,103 @@
+public  class ArrList<T>  implements ICollections<T> {
+    private T[] arr;
+    private int size;
+
+    public ArrList() {
+        arr = (T[]) new Object[10];
+    }
+
+    public ArrList(int length) {
+        arr = (T[]) new Object[length];
+    }
+
+    public void add(T item) {
+        if (item == null)
+            return;
+
+        if (size >= arr.length) {
+            resize();
+        }
+        arr[size] = (T) item;
+        size++;
+    }
+
+    @Override
+    public boolean contains(Object item) {
+        if (item == null) {
+            return false;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (item.equals(arr[i])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void resize() {
+        T[] temp = (T[]) new Object[arr.length * 3 / 2 + 1];
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[i];
+        }
+        arr = temp;
+    }
+
+
+    public void get(T item) {
+
+    }
+
+    @Override
+    public void add(int i, T item) {
+
+    }
+
+    @Override
+    public T get(int k) {
+        return null;
+    }
+
+    public int size() {
+        return size;
+    }
+
+
+    public int getIndex(int i) {
+        for (int j = 0; j < size; j++)
+            if (i == 0) {
+                return Index();
+            }
+        return 0;
+    }
+
+    private int Index() {
+        return 0;
+    }
+
+
+}public class TesterCollection {
+    public static void main(String[] args) {
+    }
+
+    public void testCollection(ICollections<String> list) {
+
+        list.add(9, "Milk");
+        list.add(8, "Bread");
+        list.add(7, "Meat");
+        list.add(6, "Fish");
+        list.add(5, "Water");
+        list.add(4, "Flower");
+        list.add(3, "Paper");
+        list.add(2, "Book");
+        list.add(1, "Apple");
+
+
+        if (list.contains("null")) {
+            System.out.println(" Milk is in the bag");
+        } else {
+            System.out.println(" Cant find this item");
+        }
+        System.out.println("Size = " + list.size());
+    }
+}
